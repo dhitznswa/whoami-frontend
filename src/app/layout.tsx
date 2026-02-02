@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Bungee } from "next/font/google";
 import "./globals.css";
+import SessionProvider from "@/providers/session-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${bungee.variable} min-h-dvh antialiased`}
       >
-        {children}
+        <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
   );

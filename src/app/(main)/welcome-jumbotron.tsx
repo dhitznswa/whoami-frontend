@@ -1,5 +1,5 @@
+import AuthPopup from "@/components/auth-popup";
 import { Button } from "@/components/ui/button";
-import React from "react";
 
 export default function WelcomeJumbotron() {
   return (
@@ -11,7 +11,9 @@ export default function WelcomeJumbotron() {
           <br />
           Semua masuk tanpa identitas.
         </p>
-        <Button>Mulai Sekarang</Button>
+        <AuthPopup>
+          <Button>Mulai Sekarang</Button>
+        </AuthPopup>
       </div>
     </div>
   );

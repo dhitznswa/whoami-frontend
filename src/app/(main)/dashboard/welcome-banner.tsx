@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   InputGroup,
@@ -15,18 +16,19 @@ export default function WelcomeBanner() {
   const { session } = useSession();
   const { copy, isCopied } = useCopyToClipboard();
 
-  const linkPublicMessage = `${process.env.BASE_URL}/s/@${session?.username}`;
+  const linkPublicMessage = `${window.location.origin}/s/@${session?.username}`;
   return (
     <Card>
       <CardContent>
-        <h1 className="text-2xl font-bold">
-          Selamat datang, <span className="text-primary">{session?.name}</span>
+        <h1 className="text-xl font-bold">
+          Halo, <br />{" "}
+          <span className="text-primary line-clamp-1">{session?.name}</span>
         </h1>
-        <div className="mt-5 grid grid-cols-2 gap-4">
+        <div className="mt-5">
           <div className="">
             <InputGroup className="border border-primary">
               <InputGroupInput
-                placeholder={linkPublicMessage}
+                value={linkPublicMessage}
                 readOnly
                 className="text-xs"
               />
@@ -45,6 +47,17 @@ export default function WelcomeBanner() {
                 </InputGroupButton>
               </InputGroupAddon>
             </InputGroup>
+            <p className="text-xs text-muted-foreground mt-2">
+              * Bagikan link ini untuk menerima pesan
+            </p>
+          </div>
+          <div className="mt-3 space-y-2">
+            <Button className="w-full text-xs bg-green-600 text-white">
+              Share to WhatsApp
+            </Button>
+            <Button className="w-full text-xs bg-linear-to-br from-purple-600 via-50% via-pink-600 to-red-600 text-white">
+              Share to Instagram
+            </Button>
           </div>
         </div>
       </CardContent>

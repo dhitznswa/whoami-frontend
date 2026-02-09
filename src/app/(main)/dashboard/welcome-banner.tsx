@@ -16,7 +16,9 @@ export default function WelcomeBanner() {
   const { session } = useSession();
   const { copy, isCopied } = useCopyToClipboard();
 
-  const linkPublicMessage = `${window.location.origin}/s/@${session?.username}`;
+  const linkPublicMessage = `${
+    process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+  }/s/@${session?.username}`;
   return (
     <Card>
       <CardContent>

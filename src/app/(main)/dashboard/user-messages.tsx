@@ -8,8 +8,8 @@ export default function UserMessages() {
 
   return (
     <>
-      <h2>Pesan Masuk</h2>
-      <div className="w-full">
+      <h2 className="font-bold">Pesan Masuk</h2>
+      <div className="w-full mt-4">
         {session && <ListMessages username={session?.username} />}
       </div>
     </>

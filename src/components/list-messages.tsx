@@ -1,9 +1,12 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Item, ItemContent } from "@/components/ui/item";
 import api from "@/lib/axios";
+import { format } from "date-fns";
 import { useQuery } from "@tanstack/react-query";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 type MessageTypes = {
   id: string;
@@ -43,7 +46,7 @@ export default function ListMessages({ username }: { username: string }) {
   console.log(data);
 
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="space-y-3">
       {data.map((message: MessageTypes) => (
         <CardMessage key={message.id} message={message} />
       ))}
@@ -52,9 +55,22 @@ export default function ListMessages({ username }: { username: string }) {
 }
 
 function CardMessage({ message }: { message: MessageTypes }) {
+  const senderName =
+    message.name === null || message.name === "" ? "Anonymouse" : message.name;
+
   return (
-    <Card>
-      <CardContent>{message.content}</CardContent>
-    </Card>
+    <div>
+      <Card className="rounded-sm">
+        <CardContent>
+          <Badge>{senderName}</Badge>
+          <p className="text-sm mt-3">{message.content}</p>
+        </CardContent>
+      </Card>
+      <div className="text-xs ml-2 mt-1">
+        <p className=" text-muted-foreground">
+          {format(message.createdAt, "dd MMM yyyy - HH:mm")}
+        </p>
+      </div>
+    </div>
   );
 }

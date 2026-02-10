@@ -2,10 +2,12 @@
 
 import { getSession } from "@/lib/session";
 import { useSession } from "@/store/useAuthStore";
+import { usePathname } from "next/navigation";
 import { ReactNode, useEffect } from "react";
 
 export default function SessionProvider({ children }: { children: ReactNode }) {
   const setSession = useSession((s) => s.setSession);
+  const pathname = usePathname();
 
   useEffect(() => {
     async function fetchData() {
@@ -14,7 +16,7 @@ export default function SessionProvider({ children }: { children: ReactNode }) {
     }
 
     fetchData();
-  }, [setSession]);
+  }, [setSession, pathname]);
 
   return <>{children}</>;
 }

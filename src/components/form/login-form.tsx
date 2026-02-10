@@ -42,7 +42,6 @@ export function LoginForm() {
             type: "server",
             message: err.response.data.message[0],
           });
-          setError(err.response.data.message[0]);
           setLoading(false);
           return;
         }
@@ -62,7 +61,7 @@ export function LoginForm() {
       className="mt-4"
     >
       {error && (
-        <p className="text-xs text-destructive mb-2 text-center">{error}</p>
+        <p className="text-xs text-destructive mb-3 text-center">{error}</p>
       )}
       <FieldGroup className="-space-y-2 ">
         <Controller

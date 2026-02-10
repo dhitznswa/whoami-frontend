@@ -29,21 +29,23 @@ export default function ListMessages({ username }: { username: string }) {
   });
 
   if (isPending) {
-    return <p>Memuat pesan...</p>;
+    return (
+      <p className="text-sm text-muted-foreground">Memuat pesan masuk...</p>
+    );
   }
 
   if (isError) {
     return (
       <>
-        <p>{error.message}</p>
+        <p className="text-sm text-muted-foreground mb-2">
+          Gagal mendapatkan pesan
+        </p>
         <Button size="xs" onClick={() => refetch()}>
           Coba lagi
         </Button>
       </>
     );
   }
-
-  console.log(data);
 
   return (
     <div className="space-y-3">

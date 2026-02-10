@@ -15,8 +15,8 @@ const bungee = Bungee({
 });
 
 export const metadata: Metadata = {
-  title: "Whoami - Kirim & Terima Pesan Rahasia",
-  description: "Confes ke gebetan atau pacar secara rahasia",
+  title: "Whoam! - Dapatkan pesan rahasia dari temanmu!",
+  description: "Buat halaman mu dan dapatkan pesan rahasia dari temanmu",
 };
 
 export default function RootLayout({

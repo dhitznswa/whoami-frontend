@@ -18,7 +18,7 @@ type MessageTypes = {
 };
 
 export default function ListMessages({ username }: { username: string }) {
-  const { data, isPending, isError, error, refetch } = useQuery({
+  const { data, isPending, isError, refetch } = useQuery({
     queryKey: [`messages-${username}`],
     queryFn: async () => {
       const { data: res, status } = await api.get(`/messages/${username}`);
@@ -49,9 +49,15 @@ export default function ListMessages({ username }: { username: string }) {
 
   return (
     <div className="space-y-3">
-      {data.map((message: MessageTypes) => (
-        <CardMessage key={message.id} message={message} />
-      ))}
+      {data.length < 1 ? (
+        <p className="text-sm text-muted-foreground">
+          Belum ada pesan nih. ayo bagikan link kamu untuk mendapatkan pesan.
+        </p>
+      ) : (
+        data.map((message: MessageTypes) => (
+          <CardMessage key={message.id} message={message} />
+        ))
+      )}
     </div>
   );
 }

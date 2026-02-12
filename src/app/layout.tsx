@@ -3,6 +3,7 @@ import { Inter, Bungee } from "next/font/google";
 import "./globals.css";
 import SessionProvider from "@/providers/session-provider";
 import { QueryProvider } from "@/providers/query-provider";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({
         <SessionProvider>
           <QueryProvider>{children}</QueryProvider>
         </SessionProvider>
+        <Toaster />
       </body>
     </html>
   );

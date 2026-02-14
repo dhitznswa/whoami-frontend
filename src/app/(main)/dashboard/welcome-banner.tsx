@@ -23,7 +23,7 @@ export default function WelcomeBanner() {
 
   const linkPublicMessage = `${
     process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
-  }/s/@${session?.username}`;
+  }/s/${session?.username}`;
 
   const logout = async () => {
     try {
@@ -65,9 +65,7 @@ export default function WelcomeBanner() {
                     title="Copy"
                     size="icon-xs"
                     onClick={() => {
-                      copy(
-                        `Yuk kirim pesan ke aku tanpa ketahuan!\n${linkPublicMessage}`
-                      );
+                      copy(linkPublicMessage);
                     }}
                   >
                     {isCopied ? <Check /> : <Copy />}
